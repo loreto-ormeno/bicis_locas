@@ -1,0 +1,55 @@
+function validateForm(){
+	/* primero obtengo el valor de los campos
+	del formulario */
+	const name = $('#name').val().trim();
+	
+	const correo = new RegExp('\w+@\w+\.+[a-z]');
+	const mayuscula = new RegExp('^[A-Z]+$', 'i');
+	
+	/* Ahora pruebo 1 a 1 los valores */
+	if (name == '') {
+		$('#name').parent().append('<span>Debe ingresar su nombre</span>');
+	}
+	else {if (!mayuscula.test(name)){
+		$('#name').parent().append('<span>Ingrese solamente letras</span>');  
+	}
+	else {if (name[0] == name[0].toLowerCase()){
+		$('#name').parent().append('<span>La primera letra debe ser mayúscula</span>');  
+	}	
+	}
+	}
+
+
+	const lastname = $('#lastname').val().trim();
+	if (lastname == '') {
+		$('#lastname').parent().append('<span>Debe ingresar su apellido</span>');
+	}
+	else {if (!mayuscula.test(lastname)){
+		$('#lastname').parent().append('<span>Ingrese solamente letras</span>');  
+	}
+	else {if (lastname[0] == lastname[0].toLowerCase()){
+		$('#lastname').parent().append('<span>La primera letra debe ser mayúscula</span>');  
+	}	
+	}
+	}
+	const inputemail = $('#input-email').val().trim();
+	if (inputemail == '') {
+		$('#input-email').parent().append('<span>Debe ingresar su correo electrónico</span>');
+	}
+	else {if (!correo.test(inputemail)){
+		$('#input-email').parent().append('<span>Ingrese un formato valido</span>');  
+	}
+	}
+	const inputpassword = $('#input-password').val().trim();
+	if (inputpassword == '') {
+		$('#input-password').parent().append('<span>Debe ingresar una contraseña</span>');
+	}
+	else {if (inputpassword =='password'||inputpassword =='123456'||inputpassword =='098754'){	
+		$('#input-password').parent().append('<span>Contraseña no permitida</span>');  
+	}
+	else {if (inputpassword.length <=6){
+		$('#input-password').parent().append('<span>Debe ingresar una contraseña de 6 digitos</span>');  
+	}	
+	}
+	}
+}
